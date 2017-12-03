@@ -7,7 +7,7 @@ def list_devices():
         print (p.get_device_info_by_index(i))
 
 def record_audio():
-        CHUNK = 8192*2
+        CHUNK = 8192*32
         FORMAT = pyaudio.paInt16
         #CHANNELS = 2
         CHANNELS = 1
