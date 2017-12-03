@@ -1,5 +1,2 @@
 .*
 !.gitignore
-env
-*__pycache__
-*.sw?
