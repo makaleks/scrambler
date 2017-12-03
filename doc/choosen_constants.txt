@@ -1,0 +1,4 @@
+- Sampling frequency = 8000 measurements/second (in .wav 1 measurement is 1 byte)
+- Packet len         = 100 measurements
+- Packets per block  = 40 packets
+=> 4000 measurents   = 1 block size
