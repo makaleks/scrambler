@@ -5,7 +5,7 @@ project("scrambler")
 include_directories(${CMAKE_SOURCE_DIR}/include)
 message(STATUS ${CMAKE_SOURCE_DIR})
 
-#set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Debug)
 
 if(MSVC)
   # Force to always compile with W4
@@ -18,6 +18,8 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
   # Update if necessary
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
 endif()
+
+set (CMAKE_C_STANDARD 11)
 
 # Note: output directories must be passed before targets (all_library,
 # add_executable) mentioned
@@ -39,4 +41,4 @@ add_library(scrambler STATIC ${LIB_SOURCE_LIST})
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 enable_testing()
-#add_subdirectory(tests)
+add_subdirectory(tests)

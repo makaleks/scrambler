@@ -3,6 +3,18 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
+
+// Utility
+
+enum _PRINT_TYPE {
+    P_C,
+    P_X,
+    P_I
+};
+typedef enum _PRINT_TYPE PRINT_TYPE;
+
+void printHex(void *ptr, size_t size, PRINT_TYPE t);
 
 // # Definitions
 
@@ -63,12 +75,12 @@ S_ERROR s_clear_preset (s_preset *p);
 // # Main functions
 
 // b_blocks - number of blocks to process per call
-S_ERROR s_encrypt_io (size_t b_blocks, uint16_t *key, s_scrambler *s, uint8_t *input, size_t i_len, uint8_t *output, size_t o_len);
-S_ERROR s_encrypt_preset (size_t b_blocks, s_preset *presets, s_scrambler *s);
+S_ERROR s_encrypt_io (size_t b_blocks, uint16_t *key, s_scrambler *s, uint8_t *input, size_t i_len, uint8_t *output, size_t o_len, uint8_t *buffer);
+S_ERROR s_encrypt_preset (size_t b_blocks, s_preset *presets, s_scrambler *s, uint8_t *buffer);
 
 // b_blocks - number of blocks to process per call
-S_ERROR s_decrypt_io (size_t b_blocks, uint8_t *key, s_scrambler *s, uint8_t *input, size_t i_len, uint8_t *output, size_t o_len);
-S_ERROR s_decrypt_preset (size_t b_blocks, s_preset *presets, s_scrambler *s);
+S_ERROR s_decrypt_io (size_t b_blocks, uint16_t *key, s_scrambler *s, uint8_t *input, size_t i_len, uint8_t *output, size_t o_len, uint8_t *buffer);
+S_ERROR s_decrypt_preset (size_t b_blocks, s_preset *presets, s_scrambler *s, uint8_t *buffer);
 
 // Call this if you are not sure
 int s_is_preset_finished (s_preset *p, s_scrambler *s);
